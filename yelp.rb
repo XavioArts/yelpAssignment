@@ -22,10 +22,10 @@
 # -access res1 reviews ****DONE
 # -what does this output res1[:dishes]
 #       It returns the array of hashes in the dishes of res1
-# -print out just the name of res1 dishes (each loop)
-# -print out just the name of res1 dishes along with ingredients (nested each loop)
-# -create a function that takes a user and return a string with the users name and id
-# -create a method that takes a res and returns the menu of that res
+# -print out just the name of res1 dishes (each loop) *****DONE
+# -print out just the name of res1 dishes along with ingredients (nested each loop) *****DONE
+# -create a function that takes a user and return a string with the users name and id *****DONE
+# -create a method that takes a res and returns the menu of that res *****DONE
 # -create that takes a res and returns average review
 # -create an array of restaurants and do CRUD actions
 # -a simple that takes a restaurants and adds to your array
@@ -114,5 +114,65 @@ end
 # p access_reviews(res2)
 
 def print_dish_name(restaurant)
-    
+    restaurant[:dishes].each do |dish|
+        puts dish[:name]
+    end
 end
+
+# print_dish_name(res1)
+# print_dish_name(res2)
+
+def print_dish_ing(restaurant)
+    restaurant[:dishes].each do |dish|
+        puts "The dish is : #{dish[:name]}"
+        puts "Ingredients:"
+        dish[:ingredients].each do |ingredient|
+            puts ingredient
+        end
+    end
+end
+
+# print_dish_ing(res1)
+# print_dish_ing(res2)
+
+def user_and_id(user)
+    result = "#{user[:name]}, id no. #{user[:id]}"
+end
+
+# p user_and_id(user1)
+# p user_and_id(user2)
+
+# first try
+
+def get_menu(restaurant)
+    # first_name = restaurant[:dishes][0][:name]
+    # second_name = restaurant[:dishes][1][:name]
+    # first_price = restaurant[:dishes][0][:price]
+    # second_price = restaurant[:dishes][1][:price]
+    # result = "Menu\n#{first_name} - #{first_price}\n#{second_name} - #{second_price}"
+    menu = "Menu: "
+    restaurant[:dishes].each do |dish|
+        menu = menu + dish[:name] + " "
+        menu = menu + "#{dish[:price]} "
+    end
+    puts menu
+end
+
+### I like this way better
+
+def get_menu_new(restaurant)
+    array = ["Menu:"]
+    dish_ingred = ""
+    restaurant[:dishes].each do |dish|
+        array << "#{dish[:name]} - #{dish[:price]}"
+        dish[:ingredients].each do |ingredient|
+            dish_ingred += ingredient + " "
+        end
+        array << dish_ingred
+        dish_ingred = ""
+    end
+    puts array
+end
+
+get_menu(res1)
+get_menu_new(res1)
