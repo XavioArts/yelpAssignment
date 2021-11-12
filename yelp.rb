@@ -174,5 +174,17 @@ def get_menu_new(restaurant)
     puts array
 end
 
-get_menu(res1)
-get_menu_new(res1)
+# get_menu(res1)
+# get_menu_new(res1)
+
+def average_rev(restaurant)
+    sum = 0
+    restaurant[:reviews].each do |review|
+        sum += review[:rating]
+    end
+    result = sum / restaurant[:reviews].length
+end
+
+# p average_rev(res1)
+# p average_rev(res2)
+
