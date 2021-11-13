@@ -188,3 +188,109 @@ end
 # p average_rev(res1)
 # p average_rev(res2)
 
+res_array = [res1, res2]
+@restaurant_array = [res1, res2]
+
+# do C.R.U.D on ^this^ array (Create, Read, Update, Delete)
+# new_res = {
+#   id: 0,
+#   name: "Blank Restaurant",
+#   location: {
+#     city: "",
+#     state: "",
+#   },
+#   delivery: true,
+#   days_open: "",
+#   likes: 0,
+#   dishes: [
+#     { name: "", price: 0, ingredients: [] },
+#     { name: "", price: 0, ingredients: [] },
+#   ],
+#   reviews: [
+#     { user_id: 0, rating: 0 },
+#     { user_id: 0, rating: 0 },
+#   ],
+# }
+
+res3 = {
+  id: 0,
+  name: "Pickles",
+  location: {
+    city: "X",
+    state: "X",
+  },
+  delivery: true,
+  days_open: "2",
+  likes: 0,
+  dishes: [
+    { name: "pIIckle", price: 200, ingredients: [] },
+    { name: "pickle", price: 0, ingredients: [] },
+  ],
+  reviews: [
+    { user_id: 1, rating: 10 },
+    { user_id: 2, rating: 10 },
+  ],
+}
+
+def add_res(restaurant)
+    @restaurant_array << restaurant
+end
+
+def add_blank_res(array)
+    new_index = array.length + 1
+    new_res = {
+    id: new_index,
+    name: "Blank Restaurant",
+    location: {
+        city: "",
+        state: "",
+    },
+    delivery: true,
+    days_open: "",
+    likes: 0,
+    dishes: [
+        { name: "", price: 0, ingredients: [] },
+        { name: "", price: 0, ingredients: [] },
+    ],
+    reviews: [
+        { user_id: 0, rating: 0 },
+        { user_id: 0, rating: 0 },
+    ],
+    }
+    array << new_res
+    array
+end
+
+# add_blank_res(res_array)
+# p add_res(res3)
+
+# p add_blank_res(@restaurant_array)
+
+def display_res(array, index)
+    array[index].each_pair do |key, value|
+        if (key == :location)
+            loc = "#{key}: "
+            value.each_value do |value|
+                loc += "#{value} "
+            end
+            puts loc
+        elsif (key == :dishes)
+            ##puts "#{key}:"
+            get_menu_new(array[index])
+        elsif (key == :reviews)
+            rev = "#{key}: "
+            value.each do |review|
+                review.each_pair do |key, value|
+                    rev += "#{key} = #{value} "
+                end
+                rev += "| "
+            end
+            puts rev
+        else
+            puts "#{key}: #{value}"
+        end
+    end
+end
+
+# display_res(res_array, 0)
+# display_res(res_array, 1)
