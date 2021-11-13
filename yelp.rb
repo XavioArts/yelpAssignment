@@ -17,25 +17,6 @@
 #   ]
 # }
 
-# -access user1 name through user1 ****DONE
-# -access user1 name through res2 (user1 data is in reviews) ****DONE
-# -access res1 reviews ****DONE
-# -what does this output res1[:dishes]
-#       It returns the array of hashes in the dishes of res1
-# -print out just the name of res1 dishes (each loop) *****DONE
-# -print out just the name of res1 dishes along with ingredients (nested each loop) *****DONE
-# -create a function that takes a user and return a string with the users name and id *****DONE
-# -create a method that takes a res and returns the menu of that res *****DONE
-# -create that takes a res and returns average review
-# -create an array of restaurants and do CRUD actions
-# -a simple that takes a restaurants and adds to your array
-#      a simple that takes restaurants and updates that to your array
-# -loop through your restaurants and return those with likes > 500 (select/filter)
-# -I want to think of ideas simple/hard and through them in slack
-# -more to come
-# -No interaction with terminal
-
-
 user1 = {
   id: 1,
   name: "Tony",
@@ -294,3 +275,73 @@ end
 
 # display_res(res_array, 0)
 # display_res(res_array, 1)
+
+def update_res(restaurant)
+    @restaurant_array.each do |res|
+        if (restaurant[:id] == res[:id])
+            #update
+            res.each_key do |key|
+                res[:"#{key}"] = restaurant[:"#{key}"]
+            end
+            # res[:name] = restaurant[:name]
+            # res[:location] = restaurant[:location]
+        end
+    end
+end
+
+new_res = {
+  id: 1,
+  name: "Mr Charlies",
+  location: {
+    city: "Bangkok",
+    state: "??",
+  },
+  delivery: true,
+  days_open: "mon,tues,wed,thur,fri,sat,sun",
+  likes: 69,
+  dishes: [
+    { name: "Chicked", price: 10.25, ingredients: ["noddles", "peppers"] },
+    { name: "Chicken", price: 9.25, ingredients: ["noddles", "chicken"] },
+  ],
+  reviews: [
+    { user_id: 1, rating: 6 },
+    { user_id: 2, rating: 9 },
+  ],
+}
+
+# p @restaurant_array
+# update_res(new_res)
+# p @restaurant_array
+
+## UPdate works
+
+## Delete a res from the array
+
+def delete_res(index)
+    @restaurant_array.delete_at(index)
+end
+
+def delete_from_arr(array, index)
+    array.delete_at(index)
+end
+
+# p @restaurant_array
+# # delete_res(1)
+# delete_from_arr(@restaurant_array, 0)
+# puts
+# p @restaurant_array
+
+## loop through array and return those with likes>500 (select/filter)
+
+@loop_array = [res1, res2, new_res, res3]
+loop_array = [res1,res2,new_res,res3]
+
+def likes_over_500
+    array = @loop_array.select { |res| res[:likes] > 500 }
+    @loop_array = array
+end
+
+# p @loop_array
+# likes_over_500
+# puts
+# p @loop_array
