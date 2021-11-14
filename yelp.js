@@ -46,3 +46,33 @@ let res2 = {
       { user_id: 2, rating: 4 },
     ],
 };
+
+let users = [user1, user2]
+
+const accessUserName = (user) => {
+    let userName = user.name;
+    return userName;
+}
+
+console.log(accessUserName(user1));
+console.log(accessUserName(user2));
+
+const accessReviewName = (res, array) => {
+    let name = "";
+    let id = res.reviews[0].user_id;
+    array.forEach( user => {
+        if (user.id === id) {
+            name = user.name;
+        }
+    });
+    return name;
+}
+
+console.log(accessReviewName(res2, users));
+
+const accessReviews = (res) => {
+    let result = res.reviews;
+    return result;
+}
+
+console.log(accessReviews(res1));
