@@ -127,3 +127,36 @@ const averageReview = (res) => {
 
 // console.log(averageReview(res1));
 // console.log(averageReview(res2));
+
+let resArray = [res1,res2];
+
+// CRUD actions
+
+let res3 = {
+    id: 3,
+    name: "Bob's burgers",
+    location: {
+      city: "Hell",
+      state: "CA",
+    },
+    delivery: true,
+    days_open: "mon,tues,wed,thur,fri,sat",
+    likes: 65330,
+    dishes: [
+      { name: "Bread", price: 20.25, ingredients: ["tortilla", "carne"] },
+      { name: "Water", price: 6.99, ingredients: ["tortilla", "cheese"] },
+    ],
+    reviews: [
+      { user_id: 1, rating: 9 },
+      { user_id: 2, rating: 6 },
+    ],
+};
+
+const addRes = (res, array) => {
+    array.push(res);
+    return array;
+}
+
+console.log(resArray);
+addRes(res3, resArray);
+console.log(resArray);
