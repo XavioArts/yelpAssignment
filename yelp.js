@@ -104,5 +104,15 @@ const userAndId = (user) => {
     return result;
 }
 
-console.log(userAndId(user1));
+//console.log(userAndId(user1));
+
+const getMenu = (res) => {
+    let menu = "Menu: ";
+    res.dishes.forEach (dish => {
+        menu += `${dish.name} - $${dish.price} `;
+    });
+    return menu;
+}
+
+// console.log(getMenu(res1));
 
