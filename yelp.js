@@ -54,8 +54,8 @@ const accessUserName = (user) => {
     return userName;
 }
 
-console.log(accessUserName(user1));
-console.log(accessUserName(user2));
+// console.log(accessUserName(user1));
+// console.log(accessUserName(user2));
 
 const accessReviewName = (res, array) => {
     let name = "";
@@ -68,11 +68,41 @@ const accessReviewName = (res, array) => {
     return name;
 }
 
-console.log(accessReviewName(res2, users));
+// console.log(accessReviewName(res2, users));
 
 const accessReviews = (res) => {
     let result = res.reviews;
     return result;
 }
 
-console.log(accessReviews(res1));
+// console.log(accessReviews(res1));
+
+const printDishName = (res) => {
+    let dishes = "";
+    res.dishes.forEach ( dish => {
+        // console.log(dish.name);
+        dishes += `${dish.name}` + " ";
+    });
+    return dishes;
+}
+
+// console.log(printDishName(res1));
+
+const printDishIngred = (res) => {
+    res.dishes.forEach (dish => {
+        console.log(`${dish.name}:`);
+        dish.ingredients.forEach (ingred => {
+            console.log(ingred);
+        });
+    });
+}
+
+// printDishIngred(res2);
+
+const userAndId = (user) => {
+    let result = `${user.name}, id no. ${user.id}`;
+    return result;
+}
+
+console.log(userAndId(user1));
+
