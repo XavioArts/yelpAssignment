@@ -116,3 +116,14 @@ const getMenu = (res) => {
 
 // console.log(getMenu(res1));
 
+const averageReview = (res) => {
+    let sum = 0;
+    res.reviews.forEach (review => {
+        sum += review.rating;
+    });
+    let result = sum / res.reviews.length;
+    return result;
+}
+
+// console.log(averageReview(res1));
+// console.log(averageReview(res2));
